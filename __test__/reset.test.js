@@ -6,12 +6,13 @@ const html = fs.readFileSync(
 );
 
 beforeEach(() => {
+  // check if jdsom can run script-elements in innerHTML
   document.documentElement.innerHTML = html.toString();
+  //document.documentElement.innerHTML = "<h1>fasdfasd</h1>";
+  require("../public/main.js");
 });
 
 test("Reset Button Works ", () => {
-  require("../public/main.js");
-
   expect(document.getElementById("clearButton")).toBeTruthy();
   expect(document.getElementById("login").value).toBeFalsy();
 
